@@ -4,8 +4,16 @@
 
 # Volks API
 
-1. DB Setup
+1. Clone project
+
+2. Run `yarn install `
+
+3. Set .env with the help of .env.example
+
+4. DB Setup
 
 ```
 docker-compuse up -d
 ```
+
+5. `yarn start:dev`
