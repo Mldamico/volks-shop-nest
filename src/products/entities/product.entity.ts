@@ -10,7 +10,7 @@ export class Product {
   })
   title: string;
 
-  @Column('numeric', { default: 9999 })
+  @Column('float', { default: 9999 })
   price: number;
 
   @Column({
