@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Product } from './product.entity';
 
 @Entity()
 export class ProductImage {
@@ -7,4 +14,7 @@ export class ProductImage {
 
   @Column('text')
   url: string;
+
+  @ManyToOne(() => Product, (product) => product.images)
+  product: Product;
 }
