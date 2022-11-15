@@ -55,10 +55,12 @@ export class ProductsService {
 
   async findOne(term: string) {
     let product: Product;
+    console.log(term);
     if (isUUID(term)) {
       product = await this.productRepository.findOneBy({ id: term });
     } else {
       const queryBuilder = this.productRepository.createQueryBuilder('prod');
+      console.log(term);
       product = await queryBuilder
         .where('UPPER(title) =:title or slug =:slug', {
           title: term.toUpperCase(),
@@ -116,6 +118,15 @@ export class ProductsService {
     const product = await this.findOne(id);
     await this.productRepository.remove(product);
     return true;
+  }
+
+  async deleteAllProducts() {
+    const query = this.productRepository.createQueryBuilder('product');
+    try {
+      return await query.delete().where({}).execute();
+    } catch (error) {
+      this.handleExceptions(error);
+    }
   }
 
   private handleExceptions(error: any) {
