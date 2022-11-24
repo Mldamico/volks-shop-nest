@@ -17,3 +17,9 @@ docker-compuse up -d
 ```
 
 5. `yarn start:dev`
+
+6. Run Seeds.
+
+```
+ GET /api/seeds
+```
